@@ -18,3 +18,5 @@ de.thorstenweiskopf.jaxwsdemo.client: From wsimport generated client service fil
 de.thorstenweiskopf.jaxwsdemo.client.handler: Handler classes that are needed to get the RAW SOAP XML Message
 
 build with sources from herre: http://www.mkyong.com/webservices/jax-ws/jax-ws-hello-world-example/
+
+tested with java 1.7, 1.8, tomcat 7, jboss 6.0, jboss 6.5 

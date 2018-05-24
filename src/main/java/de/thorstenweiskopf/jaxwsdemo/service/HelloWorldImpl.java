@@ -11,7 +11,7 @@ import de.thorstenweiskopf.jaxwsdemo.client.HelloWorld;
 import javax.jws.WebService;
  
 //Service Implementation
-@WebService(endpointInterface = "de.thorstenweiskopf.jaxwsdemo.jaxws_webservicedemo.service.HelloWorld")
+@WebService(endpointInterface = "de.thorstenweiskopf.jaxwsdemo.service.HelloWorld")
 public class HelloWorldImpl implements HelloWorld{
  
 	@Override

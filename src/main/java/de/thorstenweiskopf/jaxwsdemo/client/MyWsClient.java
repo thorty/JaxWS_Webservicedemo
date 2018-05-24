@@ -14,33 +14,45 @@ import javax.xml.ws.BindingProvider;
  */
 public class MyWsClient {
     
-    public static void main(String[] args) {
-        
+    
+    
+    
+    public void callWebservice(){
         //Get WS classes
         HelloWorldImplService service = new HelloWorldImplService();
         
+        setHandler(service);
         
-        //Set the Custom HandlerResolver        
-        service.setHandlerResolver(new JaxWsHandlerResolver());        
         HelloWorld helloWorld = service.getHelloWorldImplPort();
+        
+        //Todo Set Timeout
+        //Todo Set Endpoint
         
         //Get the Response from WS
         System.out.println(helloWorld.getHelloWorldAsString("Dude"));
-        //Get the original SOAP Request and Response Message
-        System.out.println("");
-        
-        
-        if (((BindingProvider)helloWorld).getResponseContext().containsKey("SOAP_MSG_REQ") ){            
-            String soapRequestMsg = (String) ((BindingProvider)helloWorld).getResponseContext().get("SOAP_MSG_REQ");            
-            System.out.println(soapRequestMsg);
-        }
-        if ( ((BindingProvider)helloWorld).getResponseContext().containsKey("SOAP_MSG_RESP")){            
-            String soapResponseMsg = (String) ((BindingProvider)helloWorld).getResponseContext().get("SOAP_MSG_RESP");            
-            System.out.println(soapResponseMsg);
-        }        
-        
+                
+        printRequestResponse((BindingProvider)helloWorld);
+  
     }
     
 
+    /**
+    * Get the original SOAP Request and Response Message
+    */
+    public void printRequestResponse(BindingProvider bp){                
+        if (((BindingProvider)bp).getResponseContext().containsKey("SOAP_MSG_REQ") ){            
+            String soapRequestMsg = (String) ((BindingProvider)bp).getResponseContext().get("SOAP_MSG_REQ");            
+            System.out.println(soapRequestMsg);
+        }
+        if ( ((BindingProvider)bp).getResponseContext().containsKey("SOAP_MSG_RESP")){            
+            String soapResponseMsg = (String) ((BindingProvider)bp).getResponseContext().get("SOAP_MSG_RESP");            
+            System.out.println(soapResponseMsg);
+        } 
+    }
+
+    private void setHandler(HelloWorldImplService service) {
+        //Set the Custom HandlerResolver        
+        service.setHandlerResolver(new JaxWsHandlerResolver());               
+    }
     
 }

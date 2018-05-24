@@ -5,14 +5,14 @@
  */
 package de.thorstenweiskopf.jaxwsdemo.service;
 
-
-import javax.xml.ws.Endpoint;
-
-//Endpoint publisher
-public class HelloWorldPublisher{
-	
-	public static void start() {
-	   Endpoint.publish("http://localhost:9999/ws/hello", new HelloWorldImpl());
+/**
+ *
+ * @author MVC6
+ */
+public class StartServer {
+    
+    public static void main(String[] args) {
+        HelloWorldPublisher.start();
     }
-
+    
 }
